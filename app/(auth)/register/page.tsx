@@ -124,7 +124,7 @@ function RegisterPageContent() {
 								<label className="mb-2 ml-1 block text-sm text-on-surface-variant">Full Name</label>
 								<div className="flex items-center gap-3 rounded-xl border border-outline/15 bg-surface-container-low px-4 py-3 transition-all focus-within:border-outline/40">
 									<span className="material-symbols-outlined text-outline">
-                                        <img src="/User.svg" alt="Person Icon" />
+                                        <img src="/user.svg" alt="Person Icon" />
                                     </span>
 									<input
 										type="text"
