@@ -1,5 +1,5 @@
-import { Footer } from "@/app/components/layout/footer";
-import { Navbar } from "@/app/components/layout/navbar";
+import { Footer } from "@/src/components/layout/footer";
+import { Navbar } from "@/src/components/layout/navbar";
 
 export default function MainLayout({
   children,

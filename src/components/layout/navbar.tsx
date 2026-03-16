@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/authOptions";
-import getUserProfile from "@/lib/auth/getUserProfile";
+import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
+import getUserProfile from "@/src/lib/auth/getUserProfile";
 
 const navLinks = [
   { href: "/", label: "Home", authRequired: false },

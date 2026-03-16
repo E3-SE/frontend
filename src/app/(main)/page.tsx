@@ -1,5 +1,5 @@
 import { MassagesResponse } from "@/interface";
-import { apiBaseUrl } from "@/lib/config";
+import { apiBaseUrl } from "@/src/lib/config";
 import { HomePageClient } from "./_components/homePageClient";
 
 export const revalidate = 60;

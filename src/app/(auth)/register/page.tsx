@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { apiBaseUrl } from "@/lib/config";
+import { apiBaseUrl } from "@/src/lib/config";
 
 function RegisterPageContent() {
 	const router = useRouter();

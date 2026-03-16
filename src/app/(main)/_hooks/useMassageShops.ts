@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { MassageShop, MassagesResponse } from "@/interface";
-import { apiBaseUrl } from "@/lib/config";
+import { apiBaseUrl } from "@/src/lib/config";
 
 type UseMassageShopsOptions = {
   limit: number;

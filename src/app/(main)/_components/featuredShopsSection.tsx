@@ -1,5 +1,5 @@
 import { MassageShop } from "@/interface";
-import { ShopCard } from "@/app/components/shops/shopCard";
+import { ShopCard } from "@/src/components/shops/shopCard";
 
 type FeaturedShopsSectionProps = {
   featuredShops: MassageShop[];
