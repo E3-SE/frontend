@@ -4,8 +4,13 @@ import { getAdminUsers, registerAdminUser } from "@/src/lib/admin/adminApi";
 import formatPhoneNumber from "@/src/lib/admin/formatPhoneNumber";
 import getAdminTokenOrThrow from "@/src/lib/admin/getAdminTokenOrThrow";
 import getUserProfile from "@/src/lib/auth/getUserProfile";
+import CreateAdminUserModal from "./_components/createAdminUserModal";
 
 type SearchParams = Record<string, string | string[] | undefined>;
+type CreateAdminActionState = {
+  success: boolean;
+  message: string | null;
+};
 
 function readSearchParam(params: SearchParams, key: string) {
   const value = params[key];
@@ -64,7 +69,6 @@ export default async function UserManagementPage({
 }: {
   searchParams?: SearchParams | Promise<SearchParams>;
 }) {
-  const createUserModalId = "create-user-modal";
   const resolvedSearchParams =
     searchParams instanceof Promise ? await searchParams : (searchParams ?? {});
 
@@ -86,19 +90,36 @@ export default async function UserManagementPage({
     data: null,
   }));
 
-  async function createAdminAction(formData: FormData) {
+  async function createAdminAction(
+    _state: CreateAdminActionState,
+    formData: FormData,
+  ): Promise<CreateAdminActionState> {
     "use server";
 
-    const actionToken = await getAdminTokenOrThrow();
+    try {
+      const actionToken = await getAdminTokenOrThrow();
 
-    await registerAdminUser(actionToken, {
-      name: String(formData.get("name") ?? "").trim(),
-      email: String(formData.get("email") ?? "").trim(),
-      password: String(formData.get("password") ?? "").trim(),
-      tel: formatPhoneNumber(String(formData.get("tel") ?? "").trim()),
-    });
+      await registerAdminUser(actionToken, {
+        name: String(formData.get("name") ?? "").trim(),
+        email: String(formData.get("email") ?? "").trim(),
+        password: String(formData.get("password") ?? "").trim(),
+        tel: formatPhoneNumber(String(formData.get("tel") ?? "").trim()),
+      });
 
-    revalidatePath("/admin-dashboard/users");
+      revalidatePath("/admin-dashboard/users");
+      return {
+        success: true,
+        message: "Admin user created successfully.",
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message:
+          error instanceof Error
+            ? error.message
+            : "Failed to create admin user. Please try again.",
+      };
+    }
   }
 
   const filteredUsers = usersResponse.data
@@ -152,71 +173,7 @@ export default async function UserManagementPage({
           <div className="rounded-xl bg-surface-container-low px-4 py-3 text-sm text-on-surface-variant">
             {filteredUsers.length} of {usersResponse.count} shown
           </div>
-
-          <input id={createUserModalId} type="checkbox" className="peer hidden" />
-          <label
-            htmlFor={createUserModalId}
-            className="cursor-pointer rounded-full bg-primary px-5 py-2 text-sm font-semibold text-on-primary hover:opacity-90"
-          >
-            Create Admin User
-          </label>
-
-          <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-black/35 p-4 opacity-0 transition-opacity peer-checked:pointer-events-auto peer-checked:opacity-100">
-            <div className="w-full max-w-xl rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-6">
-              <div className="mb-4 flex items-center justify-between">
-                <h5 className="font-headline text-xl text-on-surface">Create New Admin User</h5>
-                <label
-                  htmlFor={createUserModalId}
-                  className="cursor-pointer rounded-full border border-outline-variant/30 px-3 py-1 text-xs text-on-surface-variant"
-                >
-                  Close
-                </label>
-              </div>
-
-              <form action={createAdminAction} className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <input
-                  name="name"
-                  required
-                  placeholder="Full name"
-                  className="rounded-xl border border-outline-variant/30 bg-surface px-4 py-3 text-sm"
-                />
-                <input
-                  name="tel"
-                  required
-                  placeholder="Phone (xxx-xxx-xxxx)"
-                  className="rounded-xl border border-outline-variant/30 bg-surface px-4 py-3 text-sm"
-                />
-                <input
-                  name="email"
-                  required
-                  type="email"
-                  placeholder="Email"
-                  className="rounded-xl border border-outline-variant/30 bg-surface px-4 py-3 text-sm md:col-span-2"
-                />
-                <input
-                  name="password"
-                  required
-                  type="password"
-                  placeholder="Password"
-                  className="rounded-xl border border-outline-variant/30 bg-surface px-4 py-3 text-sm md:col-span-2"
-                />
-                <div className="flex justify-end gap-2 md:col-span-2">
-                  <label
-                    htmlFor={createUserModalId}
-                    className="cursor-pointer rounded-full border border-outline-variant/30 px-5 py-2 text-sm text-on-surface-variant"
-                  >
-                    Cancel
-                  </label>
-                  <button
-                    type="submit"
-                    className="rounded-full bg-primary px-8 py-2 text-sm font-semibold text-on-primary transition-opacity hover:opacity-90"
-                  >
-                    Create Admin User
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
+          <CreateAdminUserModal action={createAdminAction} />
         </div>
       </div>
 
