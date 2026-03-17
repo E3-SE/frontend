@@ -4,17 +4,20 @@ import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
 import getUserProfile from "@/src/lib/auth/getUserProfile";
 
 const navLinks = [
-  { href: "/", label: "Home", authRequired: false },
-  { href: "/massage-shops", label: "Massage Shops", authRequired: false },
-  { href: "/my-bookings", label: "My Bookings", authRequired: true },
+  { href: "/", label: "Home", authRequired: false, adminOnly: false },
+  { href: "/massage-shops", label: "Massage Shops", authRequired: false, adminOnly: false },
+  { href: "/my-bookings", label: "My Bookings", authRequired: true, adminOnly: false },
+  { href: "/admin-dashboard", label: "Admin Dashboard", authRequired: true, adminOnly: true },
 ];
 
 export async function Navbar() {
   const session = await getServerSession(authOptions);
   let profile = null;
+  let isAdmin = false;
 
   if (session) {
     profile = await getUserProfile(session.user.token);
+    isAdmin = profile.data.role === "admin";
   }
 
   return (
@@ -49,7 +52,7 @@ export async function Navbar() {
             </summary>
             <div className="absolute left-0 top-full mt-3 flex w-[min(20rem,calc(100vw-3rem))] flex-col overflow-hidden rounded-3xl bg-surface-container-lowest p-3 shadow-[0_8px_32px_rgb(26_28_24/0.05)]">
               {navLinks.map((link, index) => {
-                if (link.authRequired && !session) return null;
+                if ((link.authRequired && !session) || (link.adminOnly && !isAdmin)) return null;
                 return (
                   <Link
                     key={index}
@@ -72,7 +75,7 @@ export async function Navbar() {
 
           <div className="hidden items-center gap-8 lg:flex">
             {navLinks.map((link, index) => {
-              if (link.authRequired && !session) return null;
+              if ((link.authRequired && !session) || (link.adminOnly && !isAdmin)) return null;
               return (
                 <Link
                   key={index}
@@ -94,7 +97,7 @@ export async function Navbar() {
             <details className="group relative">
               <summary className="flex list-none cursor-pointer items-center gap-2 rounded-full p-1 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 [&::-webkit-details-marker]:hidden">
                 <img
-                  src={`https://img.rachatat.com/insecure/rs:fill:1200/plain/https://api.dicebear.com/9.x/lorelei/png?seed=${profile.data._id}`}
+                  src={`https://img.rachatat.com/insecure/plain/https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${profile.data._id}`}
                   alt="User avatar"
                   className="h-10 w-10 rounded-full object-cover"
                 />
