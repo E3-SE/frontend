@@ -28,8 +28,8 @@ const initialActionState: ShopActionState = {
   message: null,
 };
 
-const unavailableDescription =
-  "Description is shown in the design, but the current backend contract does not expose a description field for massage shops yet.";
+// const unavailableDescription =
+//   "Description is shown in the design, but the current backend contract does not expose a description field for massage shops yet.";
 
 function formatCurrency(value: number) {
   return new Intl.NumberFormat("en-US").format(value);
@@ -119,7 +119,7 @@ export default function EditShopForm({
                   />
                 </label>
 
-                <label className="space-y-2">
+                {/* <label className="space-y-2">
                   <span className="pl-1 text-sm font-semibold text-on-surface-variant">Description</span>
                   <textarea
                     disabled
@@ -127,7 +127,7 @@ export default function EditShopForm({
                     value={unavailableDescription}
                     className="w-full resize-none rounded-lg border border-transparent bg-surface-container-lowest p-4 text-sm text-on-surface-variant outline-none"
                   />
-                </label>
+                </label> */}
               </div>
             </section>
 
