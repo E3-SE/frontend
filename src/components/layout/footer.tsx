@@ -6,7 +6,7 @@ export async function Footer() {
 
   return (
     <footer className="bg-surface-dim px-6 pb-12 pt-20 lg:px-20">
-      <div className="mb-20 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-20 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4 ">
         <div className="space-y-6">
           <span className="inline-flex items-center gap-2 font-headline text-2xl font-bold text-primary">
             <img className="" src="/leaf.svg" alt="" />

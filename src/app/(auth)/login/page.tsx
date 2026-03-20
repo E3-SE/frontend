@@ -107,7 +107,7 @@ function LoginPageContent() {
                 >
                   <span className="relative z-10">{isSubmitting ? "Signing In..." : "Sign In"}</span>
                   <span className="material-symbols-outlined relative z-10 text-xl transition-transform group-hover:translate-x-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-arrow-right-icon lucide-arrow-right stroke-white"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-icon lucide-arrow-right stroke-white"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                   </span>
                   <div className="absolute inset-0 bg-white opacity-0 transition-opacity group-hover:opacity-10" />
                 </button>
