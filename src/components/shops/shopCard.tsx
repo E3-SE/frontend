@@ -8,8 +8,8 @@ type ShopCardProps = {
 
 export function ShopCard({ shop }: ShopCardProps) {
   return (
-    <Link href={`/massage-shops/${shop._id}`}>
-      <div className="group translate-y-0 overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+    <Link href={`/massage-shops/${shop._id}`} className="block h-full">
+      <div className="group flex h-full translate-y-0 flex-col overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
         <div className="relative h-64 overflow-hidden">
           <Image
             alt={shop.name}
@@ -26,7 +26,7 @@ export function ShopCard({ shop }: ShopCardProps) {
           </div>
         </div>
 
-        <div className="p-8">
+        <div className="flex flex-1 flex-col p-8">
           <h3 className="mb-1 text-xl font-bold transition-colors group-hover:text-primary">
             {shop.name}
           </h3>
@@ -34,10 +34,10 @@ export function ShopCard({ shop }: ShopCardProps) {
             <span>
               <Image width={14} height={14} src="/map-pin.svg" alt="Map pin" />
             </span>
-            {shop.address}
+            {shop.district}, {shop.province}
           </p>
 
-          <div className="mt-6 flex items-center justify-between pt-6">
+          <div className="mt-auto flex items-center justify-between pt-6">
             <div>
               <span className="mb-1 block text-xs uppercase tracking-wider text-outline">
                 Starting from

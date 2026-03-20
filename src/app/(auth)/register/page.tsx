@@ -130,7 +130,7 @@ function RegisterPageContent() {
 										required
 										value={name}
 										onChange={(event) => setName(event.target.value)}
-										placeholder="Jane Doe"
+										placeholder="Name Surname"
 										className="w-full border-none bg-transparent text-on-surface placeholder:text-outline-variant focus:ring-0"
 									/>
 								</div>

@@ -17,6 +17,26 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "api.dicebear.com",
         pathname: "/9.x/lorelei/svg",
+      },
+      {
+        protocol: "https",
+        hostname: "img.rachatat.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "img.rachatat.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "fe-storage.rachatat.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "fe-storage.rachatat.com",
+        pathname: "/**",
       }
     ],
   },

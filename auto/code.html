@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "on-tertiary-fixed-variant": "#4b4639",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#fffbff",
+                "primary-fixed": "#d3e8d7",
+                "primary-fixed-dim": "#b7cbbc",
+                "on-error": "#ffffff",
+                "surface-container-highest": "#e2e3dc",
+                "surface-tint": "#506356",
+                "inverse-surface": "#2f312d",
+                "tertiary-container": "#7a7465",
+                "on-background": "#1a1c18",
+                "secondary-fixed-dim": "#dfc1ab",
+                "surface-container-high": "#e8e9e2",
+                "secondary-container": "#fddcc6",
+                "outline-variant": "#c3c8c2",
+                "on-secondary-fixed-variant": "#584232",
+                "secondary-fixed": "#fddcc6",
+                "tertiary": "#615c4d",
+                "inverse-primary": "#b7cbbc",
+                "surface": "#f9faf3",
+                "outline": "#737873",
+                "on-primary-container": "#f6fff5",
+                "error-container": "#ffdad6",
+                "primary": "#4e6053",
+                "on-error-container": "#93000a",
+                "background": "#f9faf3",
+                "on-secondary-container": "#77604e",
+                "on-secondary": "#ffffff",
+                "on-tertiary": "#ffffff",
+                "surface-dim": "#dadad4",
+                "on-primary-fixed-variant": "#394b3f",
+                "on-surface-variant": "#434843",
+                "on-primary": "#ffffff",
+                "surface-bright": "#f9faf3",
+                "on-secondary-fixed": "#28180a",
+                "surface-variant": "#e2e3dc",
+                "on-primary-fixed": "#0e1f15",
+                "surface-container": "#eeeee8",
+                "inverse-on-surface": "#f1f1eb",
+                "primary-container": "#66796b",
+                "surface-container-low": "#f3f4ed",
+                "tertiary-fixed": "#eae2cf",
+                "on-tertiary-fixed": "#1f1b10",
+                "error": "#ba1a1a",
+                "tertiary-fixed-dim": "#cec6b4",
+                "on-surface": "#1a1c18",
+                "secondary": "#715a48"
+              },
+              fontFamily: {
+                "headline": ["Noto Serif"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, .serif-font { font-family: 'Noto Serif', serif; }
+        .glass-nav {
+            background: rgba(249, 250, 243, 0.85);
+            backdrop-filter: blur(24px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<nav class="glass-nav sticky top-0 z-50 px-6 py-4 flex items-center justify-between border-b border-outline-variant/20">
+<div class="flex items-center gap-8">
+<span class="font-headline text-2xl font-bold text-primary">ZenSpa</span>
+<div class="hidden md:flex gap-6 text-sm font-medium text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary border-b-2 border-secondary-fixed-dim" href="#">Massage Shops</a>
+<a class="hover:text-primary transition-colors" href="#">My Bookings</a>
+<a class="hover:text-primary transition-colors" href="#">About Us</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="bg-surface-container-low rounded-full pl-10 pr-4 py-2 border-none focus:ring-1 focus:ring-primary text-sm w-64" placeholder="Search treatments..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full text-sm font-semibold hover:bg-primary-container transition-all shadow-sm">Sign In</button>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px] mb-12">
+<div class="md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" data-alt="High-end minimalist spa interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzvR_dRbMizFdarrrqwZ3AZ9A4AiyymAt9tqwiGl2TMDAjkfQaukQvhqNoQH4s-V0Ckmk_kpF1xDs1lf-QLt37pRdwF62dIRQgd0-KV7MT8piDZSMX1SHobJBvx8SAoh454BiR5BD__VeEGKQkMbAaFmmQkP4D6EbSAqpyxe3_KejyvxSTa35-QIAr0nuVkmhYDey0XEatKWJ2jctJIVpvZR-d_iCgVaBjzMXJsfU2OgRpIBJpZD_Q1T6v_dOcyKJub8ezbbDbGy0t"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 text-white">
+<h1 class="font-headline text-5xl mb-2">The Verdant Sanctuary</h1>
+<p class="font-body text-lg opacity-90">An escape to botanical excellence.</p>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Serene massage room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrAWkfFMKte9q0o6N0NglKT69NCT_6JMAfwH-UTUiWeSAEnwKKsz3re47pELmVNyUqgAd0G7uDM0X5jI0ud_vfA0J-5aYURM8brlAcOybl1thcxHXVP5FYFZdOERF7iiZOnRSVcYctNJNXV3vLCRKjgZ3ZtYw9T1fTkuNbFcVb11B4OvIql5KsffT6izad-FGU4i96SwSWUiK1pQ2mgBglEFlVF_gQXvoOXOOaArYJAq95SBO3LZs-7NqGVQejrEkROjf9w5Ua4h4N"/>
+</div>
+<div class="rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Spa products" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC84AiW7K8EMgJY9EdA_bL_KjFG3VjfSs_gq13Ek__miX_ovWy_-64ITNFzZK3RGeCNYZtBGmy03eFEGPcm2zc1SysrDKq8lwR9NaFJCYZ2wytq_FK3etX3uDZ3ID48zFfA1ayE1C3BiH0Zdcp_lADdllzsUnDBZMvSAs6melFsCt-yNXRuU9ucazsU9BJrqj8v7po2ijZdY3Wc27ebnukzmzH-9HF_bbgHJgjWFAIBS6ZOzrHv-a9FlzvQTYTDXMCej7nKV-55dnpc"/>
+</div>
+<div class="md:col-span-2 rounded-2xl overflow-hidden">
+<div class="w-full h-full bg-surface-container flex items-center justify-center relative">
+<img class="w-full h-full object-cover opacity-80" data-alt="Detail shot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzvR_dRbMizFdarrrqwZ3AZ9A4AiyymAt9tqwiGl2TMDAjkfQaukQvhqNoQH4s-V0Ckmk_kpF1xDs1lf-QLt37pRdwF62dIRQgd0-KV7MT8piDZSMX1SHobJBvx8SAoh454BiR5BD__VeEGKQkMbAaFmmQkP4D6EbSAqpyxe3_KejyvxSTa35-QIAr0nuVkmhYDey0XEatKWJ2jctJIVpvZR-d_iCgVaBjzMXJsfU2OgRpIBJpZD_Q1T6v_dOcyKJub8ezbbDbGy0t"/>
+<button class="absolute inset-0 bg-black/20 hover:bg-black/40 transition-colors flex items-center justify-center group">
+<div class="bg-white/90 px-6 py-3 rounded-full flex items-center gap-2 font-medium text-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">grid_view</span>
+                        View All 24 Photos
+                    </div>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-10 bg-surface-container-lowest rounded-3xl mb-16 shadow-sm border border-outline-variant/10">
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-primary p-4 bg-primary-fixed rounded-2xl text-3xl">location_on</span>
+<div>
+<p class="text-xs uppercase tracking-widest text-outline mb-2 font-bold">Location</p>
+<p class="text-base font-medium leading-relaxed">128 Tranquility Lane,<br/>Greenwich Village, NY 10012</p>
+</div>
+</div>
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-primary p-4 bg-primary-fixed rounded-2xl text-3xl">schedule</span>
+<div>
+<p class="text-xs uppercase tracking-widest text-outline mb-2 font-bold">Opening Hours</p>
+<p class="text-base font-medium leading-relaxed">Mon - Sun: 9:00 AM - 10:00 PM<br/>Last Appointment: 8:30 PM</p>
+</div>
+</div>
+<div class="flex items-start gap-5">
+<span class="material-symbols-outlined text-primary p-4 bg-primary-fixed rounded-2xl text-3xl">payments</span>
+<div>
+<p class="text-xs uppercase tracking-widest text-outline mb-2 font-bold">Investment</p>
+<p class="font-headline text-3xl text-primary">$120<span class="text-sm font-body text-outline font-normal"> / session</span></p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<div class="lg:col-span-8 space-y-20">
+<section>
+<div class="flex items-center gap-4 mb-6">
+<span class="h-px flex-1 bg-outline-variant/30"></span>
+<h2 class="font-headline text-4xl text-center">About The Sanctuary</h2>
+<span class="h-px flex-1 bg-outline-variant/30"></span>
+</div>
+<div class="prose prose-lg text-on-surface-variant leading-loose space-y-6">
+<p>
+                        Born from a desire to harmonize urban living with the restorative power of nature, The Verdant Sanctuary is more than just a spa—it is a commitment to your long-term wellness. Our space was designed using biophilic principles, featuring living green walls and reclaimed wood that naturally lowers cortisol levels from the moment you step inside.
+                    </p>
+<p>
+                        Our philosophy centers on 'The Mindful Touch,' a specialized technique developed by our founders that combines deep myofascial release with rhythmic breathwork. Every session is fully personalized, beginning with a brief consultation and a sensory ritual to ground your nervous system.
+                    </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12">
+<div class="bg-surface-container-low p-6 rounded-2xl text-center">
+<span class="material-symbols-outlined text-primary mb-3 text-3xl">eco</span>
+<p class="text-sm font-bold uppercase tracking-tighter">Eco-Certified</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl text-center">
+<span class="material-symbols-outlined text-primary mb-3 text-3xl">thermostat</span>
+<p class="text-sm font-bold uppercase tracking-tighter">Heated Tables</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl text-center">
+<span class="material-symbols-outlined text-primary mb-3 text-3xl">shower</span>
+<p class="text-sm font-bold uppercase tracking-tighter">Private Suites</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl text-center">
+<span class="material-symbols-outlined text-primary mb-3 text-3xl">coffee</span>
+<p class="text-sm font-bold uppercase tracking-tighter">Artisan Tea</p>
+</div>
+</div>
+</section>
+<section class="bg-primary-fixed/30 rounded-3xl p-12">
+<h3 class="font-headline text-3xl mb-10 text-center">Guest Experiences</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+<p class="italic text-on-surface-variant leading-relaxed">"A transformative experience. The moment you step through the door, the city noise just evaporates. The Deep Tissue session resolved tension I've carried for months."</p>
+<p class="font-bold text-sm text-primary">— Elena R., Verified Guest</p>
+</div>
+<div class="space-y-4">
+<div class="flex gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+<p class="italic text-on-surface-variant leading-relaxed">"The attention to detail is unmatched. From the temperature of the oil to the ambient botanical soundscape, everything is curated for total peace."</p>
+<p class="font-bold text-sm text-primary">— Marcus T., Verified Guest</p>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-4 space-y-8 sticky top-28">
+<div class="bg-primary text-on-primary p-10 rounded-3xl shadow-xl text-center space-y-6">
+<h3 class="font-headline text-3xl">Ready for Bliss?</h3>
+<p class="text-primary-fixed opacity-90">Schedule your personalized wellness session in seconds.</p>
+<a class="block w-full bg-white text-primary py-5 rounded-full font-bold text-lg hover:shadow-lg transition-all flex items-center justify-center gap-3" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                    Book Your Session
+                </a>
+<p class="text-[11px] uppercase tracking-widest opacity-60">Instant confirmation via email</p>
+</div>
+<div class="bg-surface-container rounded-3xl overflow-hidden p-8 space-y-6">
+<h4 class="font-headline text-xl">Find Us</h4>
+<div class="h-48 bg-surface-container-highest rounded-2xl overflow-hidden">
+<img class="w-full h-full object-cover grayscale brightness-90 contrast-75" data-alt="Map of Greenwich Village area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTEKjPV5BlP7_pdbJ9bYOx1aiztC-iOph7_Hdfe9U2Kfup5VnluXmtu2NX-O5FGFZhv748G9rExCjZitQSOaB00KICJzRYwHeWQNEU8ODZxXUYBqm0oUBwpmMvEJUqdDsHlBA90gxNRhxe078n7osjKk0CI_tidaYdga2ZC16tGdV16QV1MB_GZmZL25XGv3JOweUAlIVGXzOgdCV4lzAQtSF08wdbxYOvGoQnolcccO2tBpXfkJhgrKQD9kTzr1GUFrsR27AHzzux"/>
+</div>
+<div class="space-y-3">
+<div class="flex gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">directions_walk</span>
+<span class="text-on-surface-variant font-medium">2 mins from Washington Sq. Park</span>
+</div>
+<div class="flex gap-3 text-sm">
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="text-on-surface-variant font-medium">+1 (212) 555-0198</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-dim pt-20 pb-10 px-6 mt-20">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+<div class="md:col-span-2 max-w-sm">
+<span class="font-headline text-3xl font-bold text-primary mb-6 block">ZenSpa</span>
+<p class="text-base text-on-surface-variant leading-relaxed">
+                    Dedicated to redefining tranquility through editorial-grade wellness experiences and seamless connection to peace.
+                </p>
+</div>
+<div class="flex flex-col gap-5">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface">Company</p>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">About the Sanctuary</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact &amp; Press</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Wellness Philosophy</a>
+</div>
+<div class="flex flex-col gap-5">
+<p class="text-xs font-bold uppercase tracking-widest text-on-surface">Legal</p>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Cookie Policy</a>
+</div>
+</div>
+<div class="border-t border-outline-variant/30 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-xs text-on-surface-variant">© 2024 ZenSpa. Dedicated to your wellness and tranquility.</p>
+<div class="flex gap-6">
+<a class="material-symbols-outlined text-on-surface-variant text-2xl hover:text-primary transition-colors" href="#">social_leaderboard</a>
+<a class="material-symbols-outlined text-on-surface-variant text-2xl hover:text-primary transition-colors" href="#">camera</a>
+<a class="material-symbols-outlined text-on-surface-variant text-2xl hover:text-primary transition-colors" href="#">alternate_email</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
