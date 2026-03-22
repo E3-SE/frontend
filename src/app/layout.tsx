@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Serif } from "next/font/google";
+import ThemeRegistry from "@/src/components/ThemeRegistry";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -27,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} ${notoSerif.variable} antialiased`}>
-        {children}
+        <ThemeRegistry>
+          {children}
+        </ThemeRegistry>
       </body>
     </html>
   );
