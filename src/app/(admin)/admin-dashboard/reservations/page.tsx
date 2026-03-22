@@ -5,7 +5,7 @@ import {
 	updateAdminReservationDate,
 } from "@/src/lib/admin/adminApi";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
-import ReservationsListClient from "./_components/reservationsListClient";
+import ReservationsListClient from "@/src/components/admin/reservations/reservationsListClient";
 
 export default async function ManageReservationsPage() {
 

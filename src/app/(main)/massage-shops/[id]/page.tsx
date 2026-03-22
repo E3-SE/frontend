@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MassageShop } from "@/interface";
 import getShopById from "@/src/lib/getShopById";
+import getSessionAuthContext from "@/src/lib/auth/getSessionAuthContext";
 
 type MassageShopDetailPageProps = {
   params: Promise<{
@@ -20,6 +21,7 @@ export default async function MassageShopDetailPage({
   params,
 }: MassageShopDetailPageProps) {
   const { id } = await params;
+  const { session } = await getSessionAuthContext();
   const response = await getShopById<MassageShop>(id);
 
   if (!response?.data) {
@@ -28,6 +30,7 @@ export default async function MassageShopDetailPage({
 
   const shop = response.data;
   const pictures = shop.pictures?.length ? shop.pictures : [FALLBACK_IMAGE];
+  const isSignedIn = Boolean(session?.user);
 
   return (
     <section className="bg-surface px-6 py-12 lg:px-20">
@@ -137,13 +140,15 @@ export default async function MassageShopDetailPage({
             <div className="rounded-3xl bg-primary p-8 text-center text-on-primary">
               <h3 className="font-headline text-3xl">Ready to Relax?</h3>
               <p className="mt-3 text-primary-fixed">
-                Sign in to continue with your booking flow.
+                {isSignedIn
+                  ? "Continue to your booking flow."
+                  : "Sign in to continue with your booking flow."}
               </p>
               <Link
-                href="/login"
+                href={isSignedIn ? "/booking" : "/login"}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-base font-bold text-primary transition-opacity hover:opacity-90"
               >
-                Sign In to Book
+                {isSignedIn ? "Book Now" : "Sign In to Book"}
               </Link>
             </div>
           </aside>

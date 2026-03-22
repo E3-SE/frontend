@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Link from "next/link";
 import { redirect, notFound, unauthorized, forbidden } from "next/navigation";
 import getSessionAuthContext from "@/src/lib/auth/getSessionAuthContext";
-import AdminNav from "./_components/adminNav";
+import AdminNav from "@/src/components/admin/adminNav";
 
 export default async function AdminLayout({
 	children,

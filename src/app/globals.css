@@ -139,6 +139,7 @@ a {
 
 .glass-nav {
   background: rgb(249 250 243 / 0.7);
+  -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
 }
 
@@ -155,6 +156,7 @@ a {
   word-wrap: normal;
   direction: ltr;
   -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useActionState, useState } from "react";
 import formatPhoneNumber from "@/src/lib/admin/formatPhoneNumber";
-import ShopImageManager from "../../_components/shopImageManager";
+import ShopImageManager from "./shopImageManager";
 
 type CreateShopActionState = {
   success: boolean;

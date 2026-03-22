@@ -6,7 +6,7 @@ import {
   updateAdminShop,
 } from "@/src/lib/admin/adminApi";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
-import EditShopForm from "./_components/editShopForm";
+import EditShopForm from "@/src/components/admin/shops/editShopForm";
 
 type ShopActionState = {
   success: boolean;

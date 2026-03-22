@@ -1,18 +1,15 @@
 import Link from "next/link";
 import { MassagesResponse } from "@/interface";
-import { ShopCard } from "@/src/components/shops/shopCard";
 import { apiBaseUrl } from "@/src/lib/config";
+import { MassageShopsListClient } from "@/src/components/main/massage-shops/massageShopsListClient";
 
 export const revalidate = 60;
 
 async function getMassageShops() {
   try {
-    const response = await fetch(
-      `${apiBaseUrl}/api/massages?sort=-averageRating&limit=100`,
-      {
-        next: { revalidate },
-      },
-    );
+    const response = await fetch(`${apiBaseUrl}/api/massages?limit=100`, {
+      next: { revalidate },
+    });
 
     if (!response.ok) {
       throw new Error("Unable to fetch massage shops.");
@@ -29,8 +26,14 @@ async function getMassageShops() {
   }
 }
 
-export default async function MassageShopsPage() {
+export default async function MassageShopsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
   const { shops, loadError } = await getMassageShops();
+  const params = await searchParams;
+  const searchQuery = params.q || "";
 
   return (
     <section className="bg-surface px-6 py-20 lg:px-20">
@@ -50,23 +53,11 @@ export default async function MassageShopsPage() {
           preferred location, atmosphere, and budget.
         </p>
 
-        <div className="mt-10">
-          {loadError ? (
-            <p className="rounded-xl bg-error-container px-4 py-3 text-sm text-on-error-container">
-              {loadError}
-            </p>
-          ) : shops.length === 0 ? (
-            <div className="rounded-xl bg-surface-container-low p-6 text-on-surface-variant">
-              No massage shops available right now.
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {shops.map((shop) => (
-                <ShopCard key={shop._id} shop={shop} />
-              ))}
-            </div>
-          )}
-        </div>
+        <MassageShopsListClient
+          shops={shops}
+          loadError={loadError}
+          searchQuery={searchQuery}
+        />
       </div>
     </section>
   );

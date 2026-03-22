@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useActionState, useState } from "react";
 import type { AdminShop } from "@/src/lib/admin/adminApi";
 import formatPhoneNumber from "@/src/lib/admin/formatPhoneNumber";
-import ShopImageManager from "../../../_components/shopImageManager";
+import ShopImageManager from "./shopImageManager";
 
 type ShopActionState = {
   success: boolean;
@@ -253,7 +253,7 @@ export default function EditShopForm({
                 <div className="border-t border-surface-variant/50 pt-4">
                   <p className="pl-1 text-sm font-semibold text-on-surface-variant">Public Rating</p>
                   <div className="mt-2 flex items-center gap-2 rounded-lg bg-surface-container-lowest p-4">
-                    <span className="material-symbols-outlined text-yellow-600" style={{ fontVariationSettings: "'FILL' 1" }}>
+                    <span className="material-symbols-outlined text-yellow-600">
                         <img src="/star-yellow.svg" alt="" />
                     </span>
                     <span className="text-xl font-bold text-on-surface">{rating}</span>
