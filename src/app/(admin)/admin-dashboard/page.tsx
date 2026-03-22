@@ -38,7 +38,6 @@ export default async function AdminDashboardPage() {
             <div className="bg-secondary-container text-secondary mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
               <span
                 className="material-symbols-outlined"
-                style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 <img src="/leaf.svg" alt="" />
               </span>
@@ -68,7 +67,6 @@ export default async function AdminDashboardPage() {
             <div className="bg-primary-fixed text-primary mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
               <span
                 className="material-symbols-outlined"
-                style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 <img src="/calendar-range.svg" alt="" />
               </span>
@@ -98,7 +96,6 @@ export default async function AdminDashboardPage() {
             <div className="bg-primary-fixed text-primary mb-6 flex h-12 w-12 items-center justify-center rounded-xl">
               <span
                 className="material-symbols-outlined"
-                style={{ fontVariationSettings: "'FILL' 1" }}
               >
                 <img src="/users.svg" alt="" />
               </span>

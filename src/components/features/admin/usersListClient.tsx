@@ -125,6 +125,7 @@ export default function UsersListClient({
 
       <div className="mb-6 grid grid-cols-1 gap-3 rounded-2xl bg-surface-container-low p-4 md:grid-cols-3">
         <select
+          aria-label="Filter by role"
           value={roleFilter}
           onChange={(event) => setRoleFilter(event.target.value)}
           className="rounded-xl border border-outline-variant/20 bg-surface px-3 py-2 text-sm text-on-surface"
@@ -143,6 +144,7 @@ export default function UsersListClient({
         />
 
         <select
+          aria-label="Sort by"
           value={sortBy}
           onChange={(event) => setSortBy(event.target.value)}
           className="rounded-xl border border-outline-variant/20 bg-surface px-3 py-2 text-sm text-on-surface"

@@ -107,7 +107,7 @@ export function HomeHeroSearch({
 
               <div className="border-t border-surface-container-high px-4 py-3">
                 <Link
-                  href={`/massage-shops/searchresult?q=${encodeURIComponent(searchInput.trim())}`}
+                  href={`/massage-shops?q=${encodeURIComponent(searchInput.trim())}`}
                   className="inline-flex items-center text-sm font-bold text-primary transition-colors hover:text-primary-container"
                 >
                   See more

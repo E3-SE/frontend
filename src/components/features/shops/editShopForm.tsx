@@ -253,8 +253,13 @@ export default function EditShopForm({
                 <div className="border-t border-surface-variant/50 pt-4">
                   <p className="pl-1 text-sm font-semibold text-on-surface-variant">Public Rating</p>
                   <div className="mt-2 flex items-center gap-2 rounded-lg bg-surface-container-lowest p-4">
+<<<<<<<< HEAD:src/components/features/shops/editShopForm.tsx
                     <span className="material-symbols-outlined text-yellow-600" style={{ fontVariationSettings: "'FILL' 1" }}>
                       <img src="/star-yellow.svg" alt="" />
+========
+                    <span className="material-symbols-outlined text-yellow-600">
+                        <img src="/star-yellow.svg" alt="" />
+>>>>>>>> dfabd6f1f79f15110032231c2566995fe4e8bd93:src/components/admin/shops/editShopForm.tsx
                     </span>
                     <span className="text-xl font-bold text-on-surface">{rating}</span>
                     <span className="text-xs text-on-surface-variant">

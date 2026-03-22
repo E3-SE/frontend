@@ -48,7 +48,7 @@ export default async function Home({
 }) {
   const resolvedSearchParams =
     searchParams instanceof Promise ? await searchParams : (searchParams ?? {});
-  
+
   const { shops, loadError } = await getMainPageShops();
   const authError = getErrorMessage(resolvedSearchParams);
   const displayError = authError || loadError;
