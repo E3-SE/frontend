@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MassagesResponse } from "@/interface";
-import { ShopCard } from "@/src/components/shops/shopCard";
+import { ShopCard } from "@/src/components/features/shops/shopCard";
 import { apiBaseUrl } from "@/src/lib/config";
 
 export const revalidate = 60;

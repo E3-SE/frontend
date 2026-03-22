@@ -22,3 +22,19 @@ export interface MassagesResponse {
     };
     data: MassageShop[];
 }
+
+export interface BookingItem {
+    _id: string;
+    reserveDate: string;
+    user: {
+        _id: string;
+        name: string;
+        email: string;
+        role: string;
+    };
+    massage: MassageShop;
+    isRated: boolean;
+    createdAt: string;
+    __v: number;
+    rating?: number;
+}

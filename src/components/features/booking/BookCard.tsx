@@ -7,8 +7,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useRouter } from 'next/navigation';
-import updateReservation from '../lib/updateReservation';
-import deleteReservation from '../lib/deleteReservation';
+import updateReservation from '../../../lib/reservation/updateReservation';
+import deleteReservation from '../../../lib/reservation/deleteReservation';
+import { Button } from '../../ui/button';
 
 interface BookCardProps {
     id?: string;
@@ -74,7 +75,7 @@ export default function BookCard({
     };
 
     return (
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-8 bg-surface-container-lowest border border-[rgba(195,200,194,0.2)] rounded-xl w-full gap-6 shadow-sm hover:shadow-md transition-shadow">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-8 bg-surface-container-lowest border border-outline/20 rounded-xl w-full gap-6 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start gap-6">
                 <div className="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-surface-dim shadow-none">
                     <img src={imageSrc} alt={title} className="w-full h-full object-cover" />
@@ -82,18 +83,18 @@ export default function BookCard({
 
                 <div className="flex flex-col gap-2">
                     <h3 className="font-headline text-2xl text-primary">{title}</h3>
-                    
+
                     {isEditing ? (
                         <div className="flex flex-col sm:flex-row gap-3 mt-1">
-                            <input 
-                                type="date" 
+                            <input
+                                type="date"
                                 value={editDate}
                                 onChange={(e) => setEditDate(e.target.value)}
                                 disabled={isSubmitting}
                                 className="px-3 py-1.5 border border-outline rounded-md text-sm text-foreground bg-surface focus:outline-primary"
                             />
-                            <input 
-                                type="time" 
+                            <input
+                                type="time"
                                 value={editTime}
                                 onChange={(e) => setEditTime(e.target.value)}
                                 disabled={isSubmitting}
@@ -113,8 +114,8 @@ export default function BookCard({
                         </div>
                     )}
 
-                    <div className="mt-2 text-xs font-bold uppercase tracking-widest text-[#715A48] flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#715A48]"></span>
+                    <div className="mt-2 text-xs font-bold uppercase tracking-widest text-secondary flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-secondary"></span>
                         Confirmed
                     </div>
                 </div>
@@ -123,41 +124,44 @@ export default function BookCard({
             <div className="flex flex-col gap-3 shrink-0 w-full sm:w-auto mt-4 sm:mt-0">
                 {isEditing ? (
                     <>
-                        <button 
+                        <Button
                             onClick={handleSave}
                             disabled={isSubmitting}
-                            className="flex items-center justify-center gap-2 px-8 py-2.5 bg-primary text-on-primary rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all w-full sm:w-auto disabled:opacity-50"
+                            className="w-full sm:w-auto gap-2"
                         >
                             <SaveIcon className='text-[18px]' />
-                            <span className="font-semibold text-sm">Save</span>
-                        </button>
-                        <button 
+                            <span>Save</span>
+                        </Button>
+                        <Button
+                            variant="ghost"
                             onClick={() => setIsEditing(false)}
                             disabled={isSubmitting}
-                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-surface-container-high rounded-full hover:bg-[#dfe1d9] transition-all w-full sm:w-auto disabled:opacity-50"
+                            className="w-full sm:w-auto gap-2"
                         >
                             <CancelIcon className='text-[18px] text-on-surface-variant' />
-                            <span className="font-semibold text-sm text-on-surface-variant">Cancel Edit</span>
-                        </button>
+                            <span>Cancel Edit</span>
+                        </Button>
                     </>
                 ) : (
                     <>
-                        <button 
+                        <Button
+                            variant="secondary"
                             onClick={() => id && setIsEditing(true)}
                             disabled={!id || isSubmitting}
-                            className="flex items-center justify-center gap-2 px-8 py-2.5 bg-surface-container-high rounded-full hover:bg-[#dfe1d9] active:scale-95 transition-all w-full sm:w-auto disabled:opacity-50"
+                            className="w-full sm:w-auto gap-2"
                         >
-                            <EditIcon className='text-[18px] text-foreground' />
-                            <span className="font-semibold text-sm text-foreground">Edit</span>
-                        </button>
-                        <button 
+                            <EditIcon className='text-[18px]' />
+                            <span>Edit</span>
+                        </Button>
+                        <Button
+                            variant="danger"
                             onClick={handleCancel}
                             disabled={!id || isSubmitting}
-                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-error-container rounded-full hover:bg-[#ffd1cc] active:scale-95 transition-all w-full sm:w-auto disabled:opacity-50"
+                            className="w-full sm:w-auto gap-2"
                         >
-                            <DeleteIcon className='text-[18px] text-on-error-container' />
-                            <span className="font-semibold text-sm text-on-error-container">Cancel</span>
-                        </button>
+                            <DeleteIcon className='text-[18px]' />
+                            <span>Cancel</span>
+                        </Button>
                     </>
                 )}
             </div>

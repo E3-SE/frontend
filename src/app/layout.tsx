@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Serif } from "next/font/google";
 import ThemeRegistry from "@/src/components/ThemeRegistry";
+import ReduxProvider from "@/src/redux/ReduxProvider";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -28,9 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} ${notoSerif.variable} antialiased`}>
-        <ThemeRegistry>
-          {children}
-        </ThemeRegistry>
+        <ReduxProvider>
+          <ThemeRegistry>
+            {children}
+          </ThemeRegistry>
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import PastExperienceCard from "./PastExperienceCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
-import getReservation from "@/src/lib/getReservation";
+import getReservation from "@/src/lib/reservation/getReservation";
 
 export default async function PastExperiences() {
     const session = await getServerSession(authOptions);
@@ -14,19 +14,19 @@ export default async function PastExperiences() {
     return (
         <div className="flex flex-col gap-8 w-full">
             <h2 className="font-headline text-2xl text-foreground">Past Experiences</h2>
-            
+
             <div className="flex flex-col gap-6 w-full">
                 {pastReservations.length === 0 && (
                     <p className="text-secondary">No past experiences found.</p>
                 )}
-                
+
                 {pastReservations.map((appointment) => {
                     const massageName = typeof appointment.massage === 'object' ? appointment.massage.name : "Unknown Massage";
                     const d = new Date(appointment.reserveDate);
                     const formattedDate = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 
                     return (
-                        <PastExperienceCard 
+                        <PastExperienceCard
                             key={appointment._id}
                             id={appointment._id}
                             massageName={massageName}

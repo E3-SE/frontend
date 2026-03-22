@@ -1,5 +1,5 @@
-import UpcomeAppoint from "@/src/components/UpcomeAppoint";
-import PastExperiences from "@/src/components/PastExperiences";
+import UpcomeAppoint from "@/src/components/features/booking/UpcomeAppoint";
+import PastExperiences from "@/src/components/features/experiences/PastExperiences";
 
 export default function Booking() {
     return (

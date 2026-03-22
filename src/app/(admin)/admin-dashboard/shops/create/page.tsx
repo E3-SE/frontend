@@ -2,7 +2,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createAdminShop } from "@/src/lib/admin/adminApi";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
-import CreateShopForm from "./_components/createShopForm";
+import CreateShopForm from "@/src/components/features/shops/createShopForm";
 
 type CreateShopActionState = {
   success: boolean;

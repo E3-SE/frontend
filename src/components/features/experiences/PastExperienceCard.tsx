@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { Rating } from '@mui/material';
-import rateReservation from '../lib/rateReservation';
+import rateReservation from '../../../lib/reservation/rateReservation';
 
 interface PastExperienceCardProps {
     id: string;
@@ -35,7 +35,7 @@ export default function PastExperienceCard({ id, massageName, date, initialRatin
             <div className="flex flex-col p-6 bg-surface-container opacity-90 rounded-xl w-full">
                 <h4 className="font-bold text-base font-sans text-foreground">{massageName}</h4>
                 <span className="text-xs text-on-surface-variant">Completed: {date}</span>
-                
+
                 <div className="flex flex-col gap-2 mt-4">
                     <div className="flex gap-1">
                         <Rating name={`read-only-rating-${id}`} value={rating} readOnly size="small" className="text-secondary" />
@@ -49,22 +49,22 @@ export default function PastExperienceCard({ id, massageName, date, initialRatin
         <div className="flex flex-col p-6 bg-surface-container border border-[rgba(195,200,194,0.05)] rounded-xl w-full transition-transform hover:-translate-y-1 hover:shadow-sm">
             <h4 className="font-bold text-base font-sans text-foreground">{massageName}</h4>
             <span className="text-xs text-on-surface-variant mb-4">Completed: {date}</span>
-            
+
             <div className="flex flex-col p-4 gap-3 bg-surface-container-lowest rounded-lg w-full">
                 <span className="font-semibold text-xs uppercase text-secondary tracking-wide">Rate your session</span>
                 <div className="flex gap-2">
-                    <Rating 
-                        name={`session-rating-${id}`} 
-                        value={rating} 
+                    <Rating
+                        name={`session-rating-${id}`}
+                        value={rating}
                         onChange={(event, newValue) => {
                             setRating(newValue);
                         }}
-                        className="text-secondary" 
+                        className="text-secondary"
                         disabled={isSubmitting}
                     />
                 </div>
-                <button 
-                    onClick={handleSubmit} 
+                <button
+                    onClick={handleSubmit}
                     disabled={!rating || isSubmitting}
                     className="text-xs font-bold text-primary underline w-fit hover:opacity-80 transition-opacity disabled:opacity-50"
                 >

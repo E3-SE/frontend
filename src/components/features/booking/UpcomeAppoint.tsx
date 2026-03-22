@@ -1,7 +1,7 @@
 import BookCard from "./BookCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
-import getReservation from "@/src/lib/getReservation";
+import getReservation from "@/src/lib/reservation/getReservation";
 
 export default async function UpcomeAppoint() {
 
@@ -33,8 +33,8 @@ export default async function UpcomeAppoint() {
             <div className="flex flex-col gap-6 w-full">
                 {upcomingReservations.map((appointment) => {
                     const massageName = typeof appointment.massage === 'object' ? appointment.massage.name : "Unknown Massage";
-                    const imageSrc = typeof appointment.massage === 'object' && appointment.massage.pictures && appointment.massage.pictures.length > 0 
-                        ? appointment.massage.pictures[0] 
+                    const imageSrc = typeof appointment.massage === 'object' && appointment.massage.pictures && appointment.massage.pictures.length > 0
+                        ? appointment.massage.pictures[0]
                         : "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=400&fit=crop";
 
                     const d = new Date(appointment.reserveDate);

@@ -2,7 +2,7 @@ import { revalidatePath } from "next/cache";
 import { getAdminUsers, registerAdminUser } from "@/src/lib/admin/adminApi";
 import formatPhoneNumber from "@/src/lib/admin/formatPhoneNumber";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
-import UsersListClient from "@/src/app/(admin)/admin-dashboard/users/_components/usersListClient";
+import UsersListClient from "@/src/components/features/admin/usersListClient";
 
 type CreateAdminActionState = {
   success: boolean;

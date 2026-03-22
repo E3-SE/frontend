@@ -1,4 +1,4 @@
-import { apiBaseUrl } from "./config";
+import { apiBaseUrl } from "../config";
 
 export default async function updateReservation(id: string, reserveDate: string, token: string) {
     const response = await fetch(`${apiBaseUrl}/api/reservations/${id}`, {

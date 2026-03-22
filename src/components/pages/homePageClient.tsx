@@ -3,8 +3,8 @@
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { MassageShop } from "@/interface";
-import { HomeHeroSearch } from "./homeHeroSearch";
-import { FeaturedShopsSection } from "./featuredShopsSection";
+import { HomeHeroSearch } from "@/src/components/pages/homeHeroSearch";
+import { FeaturedShopsSection } from "@/src/components/features/shops/featuredShopsSection";
 
 type HomePageClientProps = {
   shops: MassageShop[];

@@ -1,4 +1,4 @@
-import { apiBaseUrl } from "./config";
+import { apiBaseUrl } from "../config";
 
 async function getTopRatedShops(shops: number) {
     try {

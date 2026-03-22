@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MassageShop } from "@/interface";
-import getShopById from "@/src/lib/getShopById";
+import getShopById from "@/src/lib/shop/getShopById";
 
 type MassageShopDetailPageProps = {
   params: Promise<{
@@ -49,7 +49,7 @@ export default async function MassageShopDetailPage({
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
             <div className="absolute bottom-8 left-8 text-white">
               <h1 className="font-headline text-4xl font-bold lg:text-5xl">
                 {shop.name}

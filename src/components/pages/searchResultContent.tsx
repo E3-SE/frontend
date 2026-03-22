@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useMemo } from "react";
 import { useSearchParams } from "next/navigation";
-import { ShopCard } from "@/src/components/shops/shopCard";
-import { useMassageShops } from "@/src/app/(main)/_hooks/useMassageShops";
+import { ShopCard } from "@/src/components/features/shops/shopCard";
+import { useMassageShops } from "@/src/hooks/useMassageShops";
 
 export function SearchResultContent() {
   const searchParams = useSearchParams();
