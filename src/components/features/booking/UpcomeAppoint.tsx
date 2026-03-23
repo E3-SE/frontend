@@ -4,18 +4,25 @@ import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
 import getReservation, { ReservationMassage } from "@/src/lib/reservation/getReservation";
 import getShopById from "@/src/lib/shop/getShopById";
 import { MassageShop } from "@/src/types/interface";
+import getUserProfile from "@/src/lib/auth/getUserProfile";
 
 export default async function UpcomeAppoint() {
 
     const session = await getServerSession(authOptions);
-    // if (!session || !session.user.token) return null;
-
-    // Simulate fetching with the token
     const token = session?.user?.token || "mock_token";
+    const profile  = await getUserProfile(token as string);
+    const userId = profile?.data?._id;
     const reservations = await getReservation(token as string);
 
-    const now = new Date();
-    const upcomingReservations = reservations.data.filter(app => new Date(app.reserveDate) >= now);
+
+    const upcomingReservations = reservations.data.filter((app) => {
+        const reserveDate = new Date(app.reserveDate);
+        const now = new Date();
+        if (typeof app.user === 'object' && app.user._id) {
+            return app.user._id === userId && reserveDate >= now;
+        }
+        return null;
+    });
 
     const reservationsWithPictures = await Promise.all(upcomingReservations.map(async (appointment) => {
         let pictures: string[] = [];

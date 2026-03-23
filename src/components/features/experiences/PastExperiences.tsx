@@ -2,14 +2,23 @@ import PastExperienceCard from "./PastExperienceCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
 import getReservation from "@/src/lib/reservation/getReservation";
+import getUserProfile from "@/src/lib/auth/getUserProfile";
 
 export default async function PastExperiences() {
     const session = await getServerSession(authOptions);
     const token = session?.user?.token || "mock_token";
+    const profile  = await getUserProfile(token as string);
+    const userId = profile?.data?._id;
     const reservations = await getReservation(token as string);
 
-    const now = new Date();
-    const pastReservations = reservations.data.filter(app => new Date(app.reserveDate) < now);
+    const pastReservations = reservations.data.filter((app) => {
+        const reserveDate = new Date(app.reserveDate);
+        const now = new Date();
+        if (typeof app.user === 'object' && app.user._id) {
+            return app.user._id === userId && reserveDate < now;
+        }
+        return null;
+    });
 
     return (
         <div className="flex flex-col gap-8 w-full">

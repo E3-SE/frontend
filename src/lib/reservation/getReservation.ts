@@ -35,7 +35,7 @@ export default async function getReservation(_token: string): Promise<Reservatio
     void _token; // To silence the unused variable linter error
 
     // TODO: Replace with actual API fetch when ready
-    const response = await fetch(`${apiBaseUrl}/api/reservations`, {
+    const response = await fetch(`${apiBaseUrl}/api/reservations?limit=10000`, {
         method: "GET",
         headers: {
             authorization: `Bearer ${_token}`
