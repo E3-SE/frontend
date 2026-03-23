@@ -77,7 +77,7 @@ export default async function ManageShopsPage() {
                         <img width={14} src="/star.svg" alt="" />
                       </span>
                       <span className="text-xs font-bold text-tertiary">
-                        {shop.averageRating?.toFixed(1) || "N/A"}
+                        {shop.averageRating === 0 ? "No Ratings" : shop.averageRating?.toFixed(1)}
                       </span>
                     </div>
                   </div>

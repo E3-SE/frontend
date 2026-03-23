@@ -22,7 +22,8 @@ export function ShopCard({ shop }: ShopCardProps) {
             <span>
               <Image width={14} height={14} src="/star.svg" alt="Star" />
             </span>
-            <span className="text-sm font-bold">{shop.averageRating.toFixed(1)}</span>
+            
+            <span className="text-sm font-bold">{shop.averageRating === 0 ? "No Ratings" : shop.averageRating.toFixed(1)}</span>
           </div>
         </div>
 
