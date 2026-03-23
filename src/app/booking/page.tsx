@@ -11,16 +11,35 @@ function BookingForm() {
 
     const shopId = searchParams.get('id');
     const shopName = searchParams.get('name') || "Selected Shop";
-    const shopPrice = searchParams.get('price') || "Selected Shop";
+    const shopPrice = Number(searchParams.get('price')) || 0;
 
     const [reserveDate, setReserveDate] = useState("");
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { data: session } = useSession();
 
+    const getCurrentDateTimeLocal = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    };
+
+    const minDateTime = getCurrentDateTimeLocal();
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!shopId || !reserveDate) return;
+
+        const selectDate = new Date(reserveDate);
+        const currentDate = new Date();
+        if (selectDate < currentDate) {
+            alert("Please select a date and time in the future.");
+            return;
+        }
 
         const token = session?.user?.token;
         if (!token) {
@@ -63,9 +82,34 @@ function BookingForm() {
                         type="datetime-local"
                         value={reserveDate}
                         onChange={(e) => setReserveDate(e.target.value)}
+                        min={minDateTime}
                         required
                         className="w-full border-none bg-transparent font-['Manrope'] text-base text-[#1A1C18] outline-none focus:ring-0"
                     />
+                </div>
+            </div>
+
+            {/* Pricing Summary */}
+            <div className="flex flex-col gap-4 border-t border-[#C3C8C2]/30 pt-8">
+                <div className="flex items-center justify-between text-sm text-[#434843]">
+                    <span>Subtotal</span>
+                    <span className="font-['Roboto'] text-lg font-semibold text-[#1A1C18]">
+                        ${shopPrice.toFixed(2)}
+                    </span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-[#434843]">
+                    <span>Taxes & Fees</span>
+                    <span className="font-['Roboto'] text-lg font-semibold text-[#4E6053]">
+                        $12.00
+                    </span>
+                </div>
+
+                {/* Total Row */}
+                <div className="flex items-center justify-between border-t border-[#C3C8C2]/10 pt-4 text-base font-bold text-[#1A1C18]">
+                    <span>Total</span>
+                    <span className="font-['Noto_Serif'] text-2xl font-bold">
+                        ${(shopPrice + 12).toFixed(2)}
+                    </span>
                 </div>
             </div>
 
