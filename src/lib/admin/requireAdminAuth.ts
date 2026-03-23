@@ -10,7 +10,7 @@ export default async function requireAdminAuth() {
   const { session, profile, isAdmin } = await getSessionAuthContext();
 
   if (!session?.user) {
-    redirect("/login?callbackUrl=/admin-dashboard");
+    redirect("/login?callbackUrl=/admin");
   }
 
   if (!isAdmin) {

@@ -67,9 +67,9 @@ export default async function EditShopPage({ params }: EditShopPageProps) {
       };
     }
 
-    revalidatePath("/admin-dashboard/shops");
-    revalidatePath(`/admin-dashboard/shops/${shopId}/edit`);
-    redirect("/admin-dashboard/shops");
+    revalidatePath("/admin/shops");
+    revalidatePath(`/admin/shops/${shopId}/edit`);
+    redirect("/admin/shops");
   }
 
   async function deleteShopAction(
@@ -99,8 +99,8 @@ export default async function EditShopPage({ params }: EditShopPageProps) {
       };
     }
 
-    revalidatePath("/admin-dashboard/shops");
-    redirect("/admin-dashboard/shops");
+    revalidatePath("/admin/shops");
+    redirect("/admin/shops");
   }
 
   return (

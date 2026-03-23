@@ -31,7 +31,7 @@ export default async function ManageShopsPage() {
     }
 
     await actionApi.deleteShop(shopId);
-    revalidatePath("/admin-dashboard/shops");
+    revalidatePath("/admin/shops");
   }
 
   return (
@@ -41,7 +41,7 @@ export default async function ManageShopsPage() {
           <h3 className="mb-4 text-4xl font-headline text-on-surface">Manage Shops</h3>
         </div>
         <Link
-          href="/admin-dashboard/shops/create"
+          href="/admin/shops/create"
           className="group flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-on-primary shadow-lg transition-all hover:bg-primary-container"
         >
           <span className="material-symbols-outlined">
@@ -93,7 +93,7 @@ export default async function ManageShopsPage() {
                 </div>
                 <div className="mt-4 flex gap-3">
                   <Link
-                    href={`/admin-dashboard/shops/${shop._id}/edit`}
+                    href={`/admin/shops/${shop._id}/edit`}
                     className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-surface-container-highest py-2 text-sm font-medium text-on-surface transition-colors hover:bg-secondary-fixed-dim"
                   >
                     <span className="material-symbols-outlined text-lg">

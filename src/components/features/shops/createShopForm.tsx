@@ -112,7 +112,7 @@ export default function CreateShopForm({ action }: CreateShopFormProps) {
 
         <div className="flex items-center justify-end gap-3">
           <Link
-            href="/admin-dashboard/shops"
+            href="/admin/shops"
             className="rounded-full border border-outline-variant/30 px-6 py-2 text-sm text-on-surface-variant"
           >
             Cancel

@@ -12,7 +12,7 @@ export default async function AdminLayout({
 	const { session, profile, isAdmin } = await getSessionAuthContext();
 
 	if (!session?.user) {
-		redirect("/login?callbackUrl=/admin-dashboard");
+		redirect("/login?callbackUrl=/admin");
 	} else if (!isAdmin) {
 		// redirect("/");
 		// unauthorized();

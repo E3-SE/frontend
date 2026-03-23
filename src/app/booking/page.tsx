@@ -25,7 +25,7 @@ function BookingForm() {
         const token = session?.user?.token;
         if (!token) {
             alert("Please sign in to book a massage.");
-            return router.push('/login');
+            return router.push(`/login?callbackUrl=/booking?id=${shopId}&name=${shopName}&price=${shopPrice}`);
         }
 
         setIsSubmitting(true);

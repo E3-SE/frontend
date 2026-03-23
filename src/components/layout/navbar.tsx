@@ -5,7 +5,7 @@ const navLinks = [
   { href: "/", label: "Home", authRequired: false, adminOnly: false },
   { href: "/massage-shops", label: "Massage Shops", authRequired: false, adminOnly: false },
   { href: "/mybooking", label: "My Bookings", authRequired: true, adminOnly: false },
-  { href: "/admin-dashboard", label: "Admin Dashboard", authRequired: true, adminOnly: true },
+  { href: "/admin", label: "Admin Dashboard", authRequired: true, adminOnly: true },
 ];
 
 export async function Navbar() {

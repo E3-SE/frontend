@@ -79,7 +79,7 @@ export default function EditShopForm({
 
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/admin-dashboard/shops"
+              href="/admin/shops"
               className="rounded-full border border-outline-variant/40 px-6 py-3 text-sm font-medium text-on-surface-variant transition-colors hover:bg-surface-container-low"
             >
               Discard Changes
@@ -332,7 +332,7 @@ export default function EditShopForm({
 
         <div className="flex justify-end gap-3 border-t border-outline-variant/10 pt-6">
           <Link
-            href="/admin-dashboard/shops"
+            href="/admin/shops"
             className="rounded-full border border-outline-variant/40 px-6 py-3 text-sm font-medium text-on-surface-variant transition-colors hover:bg-surface-container-low"
           >
             Back to Shops

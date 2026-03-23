@@ -39,7 +39,7 @@ export default async function ManageReservationsPage() {
 			new Date(reserveDate).toISOString()
 		);
 
-		revalidatePath("/admin-dashboard/reservations");
+		revalidatePath("/admin/reservations");
 	}
 
 	async function deleteReservationAction(formData: FormData) {
@@ -58,7 +58,7 @@ export default async function ManageReservationsPage() {
 
 		await actionApi.deleteReservation(reservationId);
 
-		revalidatePath("/admin-dashboard/reservations");
+		revalidatePath("/admin/reservations");
 	}
 
 	return (

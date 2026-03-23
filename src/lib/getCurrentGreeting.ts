@@ -1,5 +1,6 @@
 function getCurrentGreeting() {
     const currentHour = new Date().getHours();
+    console.log(currentHour);
     let greetingMessage;
 
     if (currentHour < 12) {

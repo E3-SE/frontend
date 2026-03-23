@@ -54,7 +54,7 @@ export default async function AdminDashboardPage() {
               </p> */}
               <div className="mt-4 flex justify-end">
                 <Link 
-                  href="/admin-dashboard/shops"
+                  href="/admin/shops"
                   className="bg-primary text-on-primary rounded-full px-8 py-3 font-medium shadow-sm transition-opacity hover:opacity-90"
                 >
                   Manage Shops
@@ -81,7 +81,7 @@ export default async function AdminDashboardPage() {
                 </p> */}
                 <div className="mt-4 flex justify-end">
                 <Link 
-                  href="/admin-dashboard/reservations"
+                  href="/admin/reservations"
                   className="bg-primary text-on-primary rounded-full px-8 py-3 font-medium shadow-sm transition-opacity hover:opacity-90"
                 >
                   Manage Reservations
@@ -110,7 +110,7 @@ export default async function AdminDashboardPage() {
                 </p> */}
                 <div className="mt-4 flex justify-end">
                 <Link 
-                  href="/admin-dashboard/users"
+                  href="/admin/users"
                   className="bg-primary text-on-primary rounded-full px-8 py-3 font-medium shadow-sm transition-opacity hover:opacity-90"
                 >
                   Manage Users

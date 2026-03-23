@@ -42,7 +42,7 @@ export default async function UserManagementPage() {
         tel: formatPhoneNumber(String(formData.get("tel") ?? "").trim()),
       });
 
-      revalidatePath("/admin-dashboard/users");
+      revalidatePath("/admin/users");
       return {
         success: true,
         message: "Admin user created successfully.",

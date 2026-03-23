@@ -51,8 +51,8 @@ export default async function CreateShopPage() {
       };
     }
 
-    revalidatePath("/admin-dashboard/shops");
-    redirect("/admin-dashboard/shops");
+    revalidatePath("/admin/shops");
+    redirect("/admin/shops");
   }
 
   return <CreateShopForm action={createShopAction} />;

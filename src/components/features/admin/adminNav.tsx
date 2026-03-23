@@ -14,14 +14,14 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/admin-dashboard", label: "Dashboard", icon: "/layout-dashboard.svg" },
-  { href: "/admin-dashboard/shops", label: "Manage Shops", icon: "/store.svg" },
-  { href: "/admin-dashboard/reservations", label: "All Reservations", icon: "/calendar-range.svg" },
-  { href: "/admin-dashboard/users", label: "User Management", icon: "/users.svg" },
+  { href: "/admin", label: "Dashboard", icon: "/layout-dashboard.svg" },
+  { href: "/admin/shops", label: "Manage Shops", icon: "/store.svg" },
+  { href: "/admin/reservations", label: "All Reservations", icon: "/calendar-range.svg" },
+  { href: "/admin/users", label: "User Management", icon: "/users.svg" },
 ];
 
 function isNavItemActive(pathname: string, href: string) {
-  if (href === "/admin-dashboard") {
+  if (href === "/admin") {
     return pathname === href;
   }
 

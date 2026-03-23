@@ -21,7 +21,7 @@ export function HomeHeroSearch({
 }: HomeHeroSearchProps) {
   return (
     <section className="relative h-[95vh] min-h-[85vh] items-center overflow-hidden px-6 py-20 lg:px-20">
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 -z-10">
         <img
           alt="Minimal spa environment with calming colors and soft textures"
           className="h-full w-full object-cover"

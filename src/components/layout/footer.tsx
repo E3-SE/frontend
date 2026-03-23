@@ -51,7 +51,7 @@ export async function Footer() {
                   <li>
                     <Link
                       className="transition-colors hover:text-primary"
-                      href="/admin-dashboard"
+                      href="/admin"
                     >
                       Admin Dashboard
                     </Link>
