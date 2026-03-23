@@ -11,6 +11,7 @@ function BookingForm() {
 
     const shopId = searchParams.get('id');
     const shopName = searchParams.get('name') || "Selected Shop";
+    const shopPrice = searchParams.get('price') || "Selected Shop";
 
     const [reserveDate, setReserveDate] = useState("");
 

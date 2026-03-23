@@ -1,7 +1,9 @@
 import BookCard from "./BookCard";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
-import getReservation from "@/src/lib/reservation/getReservation";
+import getReservation, { ReservationMassage } from "@/src/lib/reservation/getReservation";
+import getShopById from "@/src/lib/shop/getShopById";
+import { MassageShop } from "@/src/types/interface";
 
 export default async function UpcomeAppoint() {
 
@@ -15,7 +17,38 @@ export default async function UpcomeAppoint() {
     const now = new Date();
     const upcomingReservations = reservations.data.filter(app => new Date(app.reserveDate) >= now);
 
-    console.log(reservations);
+    const reservationsWithPictures = await Promise.all(upcomingReservations.map(async (appointment) => {
+        let pictures: string[] = [];
+        let massageName = "Unknown Massage";
+        
+        if (typeof appointment.massage === 'object') {
+            massageName = appointment.massage.name || massageName;
+            const shopId = (appointment.massage as ReservationMassage)._id || (appointment.massage as ReservationMassage & { id?: string }).id;
+            
+            if (appointment.massage.pictures && appointment.massage.pictures.length > 0) {
+                pictures = appointment.massage.pictures;
+            } else if (shopId) {
+                const shopRes = await getShopById<MassageShop>(shopId);
+                if (shopRes?.data?.pictures) {
+                    pictures = shopRes.data.pictures;
+                }
+            }
+        } else if (typeof appointment.massage === 'string') {
+            const shopRes = await getShopById<MassageShop>(appointment.massage);
+            if (shopRes?.data) {
+                massageName = shopRes.data.name || massageName;
+                if (shopRes.data.pictures) {
+                    pictures = shopRes.data.pictures;
+                }
+            }
+        }
+
+        return {
+            ...appointment,
+            computedMassageName: massageName,
+            computedPictures: pictures
+        };
+    }));
 
     return (
         <div className="flex flex-col gap-12 w-full">
@@ -31,10 +64,9 @@ export default async function UpcomeAppoint() {
             </div>
 
             <div className="flex flex-col gap-6 w-full">
-                {upcomingReservations.map((appointment) => {
-                    const massageName = typeof appointment.massage === 'object' ? appointment.massage.name : "Unknown Massage";
-                    const imageSrc = typeof appointment.massage === 'object' && appointment.massage.pictures && appointment.massage.pictures.length > 0
-                        ? appointment.massage.pictures[0]
+                {reservationsWithPictures.map((appointment) => {
+                    const imageSrc = appointment.computedPictures.length > 0
+                        ? appointment.computedPictures[0]
                         : "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&h=400&fit=crop";
 
                     const d = new Date(appointment.reserveDate);
@@ -47,14 +79,14 @@ export default async function UpcomeAppoint() {
                             id={appointment._id}
                             token={token as string}
                             reserveDate={appointment.reserveDate}
-                            title={massageName}
+                            title={appointment.computedMassageName}
                             imageSrc={imageSrc}
                             date={formattedDate}
                             time={time}
                         />
                     );
                 })}
-                {upcomingReservations.length === 0 && (
+                {reservationsWithPictures.length === 0 && (
                     <p className="text-secondary">No upcoming appointments found.</p>
                 )}
             </div>
