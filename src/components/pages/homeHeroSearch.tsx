@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MassageShop } from "@/interface";
+import { MassageShop } from "@/src/types/interface";
 
 type HomeHeroSearchProps = {
   searchInput: string;

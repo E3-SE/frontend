@@ -1,10 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
-import {
-  deleteAdminShop,
-  getAdminShopById,
-  updateAdminShop,
-} from "@/src/lib/admin/adminApi";
+import { AdminApiClient } from "@/src/lib/admin/adminApiClient";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
 import EditShopForm from "../../../../../../components/features/shops/editShopForm";
 
@@ -23,7 +19,10 @@ export default async function EditShopPage({ params }: EditShopPageProps) {
   const { shopId } = await params;
   const { session } = await requireAdminAuth();
   const token = session?.user?.token as string;
-  const shopResponse = await getAdminShopById(token, shopId).catch(() => null);
+
+  const api = new AdminApiClient(token);
+
+  const shopResponse = await api.getShopById(shopId).catch(() => null);
 
   if (!shopResponse?.data) {
     notFound();
@@ -38,12 +37,15 @@ export default async function EditShopPage({ params }: EditShopPageProps) {
     try {
       const { session: actionSession } = await requireAdminAuth();
       const actionToken = actionSession?.user?.token as string;
+
+      const actionApi = new AdminApiClient(actionToken);
+
       const pictures = formData
         .getAll("pictures")
         .map((value) => String(value).trim())
         .filter(Boolean);
 
-      await updateAdminShop(actionToken, shopId, {
+      await actionApi.updateShop(shopId, {
         name: String(formData.get("name") ?? "").trim(),
         address: String(formData.get("address") ?? "").trim(),
         district: String(formData.get("district") ?? "").trim(),
@@ -81,7 +83,10 @@ export default async function EditShopPage({ params }: EditShopPageProps) {
     try {
       const { session: actionSession } = await requireAdminAuth();
       const actionToken = actionSession?.user?.token as string;
-      await deleteAdminShop(actionToken, shopId);
+
+      const actionApi = new AdminApiClient(actionToken);
+
+      await actionApi.deleteShop(shopId);
     } catch (error) {
       const message =
         error instanceof Error && error.message

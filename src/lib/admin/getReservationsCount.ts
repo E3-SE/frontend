@@ -1,4 +1,3 @@
-
 import { apiBaseUrl } from "../config";
 
 async function getReservationsCount(token: string) {

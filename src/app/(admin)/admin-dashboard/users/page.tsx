@@ -1,5 +1,5 @@
 import { revalidatePath } from "next/cache";
-import { getAdminUsers, registerAdminUser } from "@/src/lib/admin/adminApi";
+import { AdminApiClient } from "@/src/lib/admin/adminApiClient";
 import formatPhoneNumber from "@/src/lib/admin/formatPhoneNumber";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
 import UsersListClient from "@/src/components/features/admin/usersListClient";
@@ -8,11 +8,14 @@ type CreateAdminActionState = {
   success: boolean;
   message: string | null;
 };
+
 export default async function UserManagementPage() {
   const { session, profile } = await requireAdminAuth();
   const token = session?.user?.token as string;
 
-  const usersResponse = await getAdminUsers(token).catch(() => ({
+  const api = new AdminApiClient(token);
+
+  const usersResponse = await api.getUsers().catch(() => ({
     success: false,
     count: 0,
     totalCount: 0,
@@ -30,7 +33,9 @@ export default async function UserManagementPage() {
       const { session: actionSession } = await requireAdminAuth();
       const actionToken = actionSession?.user?.token as string;
 
-      await registerAdminUser(actionToken, {
+      const actionApi = new AdminApiClient(actionToken);
+
+      await actionApi.registerAdminUser({
         name: String(formData.get("name") ?? "").trim(),
         email: String(formData.get("email") ?? "").trim(),
         password: String(formData.get("password") ?? "").trim(),

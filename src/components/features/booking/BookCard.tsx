@@ -124,44 +124,41 @@ export default function BookCard({
             <div className="flex flex-col gap-3 shrink-0 w-full sm:w-auto mt-4 sm:mt-0">
                 {isEditing ? (
                     <>
-                        <Button
+                        <button
                             onClick={handleSave}
                             disabled={isSubmitting}
-                            className="w-full sm:w-auto gap-2"
+                            className="flex items-center justify-center gap-2 px-8 py-2.5 bg-primary text-on-primary rounded-full hover:bg-primary-container hover:text-on-primary-container transition-all w-full sm:w-auto disabled:opacity-50"
                         >
                             <SaveIcon className='text-[18px]' />
-                            <span>Save</span>
-                        </Button>
-                        <Button
-                            variant="ghost"
+                            <span className="font-semibold text-sm">Save</span>
+                        </button>
+                        <button
                             onClick={() => setIsEditing(false)}
                             disabled={isSubmitting}
-                            className="w-full sm:w-auto gap-2"
+                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-surface-container-high rounded-full hover:bg-[#dfe1d9] transition-all w-full sm:w-auto disabled:opacity-50"
                         >
                             <CancelIcon className='text-[18px] text-on-surface-variant' />
-                            <span>Cancel Edit</span>
-                        </Button>
+                            <span className="font-semibold text-sm text-on-surface-variant">Cancel Edit</span>
+                        </button>
                     </>
                 ) : (
                     <>
-                        <Button
-                            variant="secondary"
+                        <button
                             onClick={() => id && setIsEditing(true)}
                             disabled={!id || isSubmitting}
-                            className="w-full sm:w-auto gap-2"
+                            className="flex items-center justify-center gap-2 px-8 py-2.5 bg-surface-container-high rounded-full hover:bg-[#dfe1d9] active:scale-95 transition-all w-full sm:w-auto disabled:opacity-50"
                         >
-                            <EditIcon className='text-[18px]' />
-                            <span>Edit</span>
-                        </Button>
-                        <Button
-                            variant="danger"
+                            <EditIcon className='text-[18px] text-foreground' />
+                            <span className="font-semibold text-sm text-foreground">Edit</span>
+                        </button>
+                        <button
                             onClick={handleCancel}
                             disabled={!id || isSubmitting}
-                            className="w-full sm:w-auto gap-2"
+                            className="flex items-center justify-center gap-2 px-6 py-2.5 bg-error-container rounded-full hover:bg-[#ffd1cc] active:scale-95 transition-all w-full sm:w-auto disabled:opacity-50"
                         >
-                            <DeleteIcon className='text-[18px]' />
-                            <span>Cancel</span>
-                        </Button>
+                            <DeleteIcon className='text-[18px] text-on-error-container' />
+                            <span className="font-semibold text-sm text-on-error-container">Cancel</span>
+                        </button>
                     </>
                 )}
             </div>

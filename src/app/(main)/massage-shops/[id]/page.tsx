@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MassageShop } from "@/interface";
+import { MassageShop } from "@/src/types/interface";
 import getShopById from "@/src/lib/shop/getShopById";
 import getSessionAuthContext from "@/src/lib/auth/getSessionAuthContext";
 
@@ -145,7 +145,7 @@ export default async function MassageShopDetailPage({
                   : "Sign in to continue with your booking flow."}
               </p>
               <Link
-                href={isSignedIn ? "/booking" : "/login"}
+                href={isSignedIn ? `/booking?id=${shop.id}&name=${encodeURIComponent(shop.name)}` : "/login"}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-base font-bold text-primary transition-opacity hover:opacity-90"
               >
                 {isSignedIn ? "Book Now" : "Sign In to Book"}

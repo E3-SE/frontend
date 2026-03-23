@@ -1,12 +1,16 @@
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
-import { deleteAdminShop, getAdminShops } from "@/src/lib/admin/adminApi";
+// 1. Import the class instead of the standalone functions
+import { AdminApiClient } from "@/src/lib/admin/adminApiClient";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
 
 export default async function ManageShopsPage() {
   const { session } = await requireAdminAuth();
   const token = session?.user?.token as string;
-  const shopsResponse = await getAdminShops(token).catch(() => ({
+
+  const api = new AdminApiClient(token);
+
+  const shopsResponse = await api.getShops().catch(() => ({
     success: false,
     count: 0,
     data: [],
@@ -17,13 +21,16 @@ export default async function ManageShopsPage() {
 
     const { session: actionSession } = await requireAdminAuth();
     const actionToken = actionSession?.user?.token as string;
+
+    const actionApi = new AdminApiClient(actionToken);
+
     const shopId = String(formData.get("shopId") ?? "").trim();
 
     if (!shopId) {
       return;
     }
 
-    await deleteAdminShop(actionToken, shopId);
+    await actionApi.deleteShop(shopId);
     revalidatePath("/admin-dashboard/shops");
   }
 

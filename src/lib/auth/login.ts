@@ -16,7 +16,7 @@ export default async function userLogIn(userEmail: string, userPassword: string)
         if (!response.ok) {
             const errorData = await response.json();
             throw new Error(errorData.message || "Login failed. Please try again.");
-        }   
+        }
         return await response.json();
 
     } catch (error) {

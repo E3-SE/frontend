@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { AdminReservation } from "@/src/lib/admin/adminApi";
+import type { AdminReservation } from "@/src/types/api";
 import ReservationsFilter from "./ReservationsFilter";
 import ReservationCard from "./ReservationCard";
 import { getMassageMeta, getStatus, getDateKey } from "./reservationUtils";

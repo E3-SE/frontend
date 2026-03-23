@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MassageShop, MassagesResponse } from "@/interface";
+import { MassageShop, MassagesResponse } from "@/src/types/interface";
 import { apiBaseUrl } from "@/src/lib/config";
 
 type UseMassageShopsOptions = {

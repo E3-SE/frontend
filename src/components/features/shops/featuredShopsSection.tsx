@@ -1,4 +1,4 @@
-import { MassageShop } from "@/interface";
+import { MassageShop } from "@/src/types/interface";
 import { ShopCard } from "@/src/components/features/shops/shopCard";
 
 type FeaturedShopsSectionProps = {

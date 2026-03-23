@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { MassageShop } from "@/interface";
+import { MassageShop } from "@/src/types/interface";
 import { HomeHeroSearch } from "@/src/components/pages/homeHeroSearch";
 import { FeaturedShopsSection } from "@/src/components/features/shops/featuredShopsSection";
 

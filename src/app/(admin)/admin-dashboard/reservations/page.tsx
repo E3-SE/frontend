@@ -1,17 +1,15 @@
 import { revalidatePath } from "next/cache";
-import {
-	deleteAdminReservation,
-	getAdminReservations,
-	updateAdminReservationDate,
-} from "@/src/lib/admin/adminApi";
+import { AdminApiClient } from "@/src/lib/admin/adminApiClient";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
 import ReservationsListClient from "@/src/components/features/admin/reservations/reservationsListClient";
 
 export default async function ManageReservationsPage() {
-
 	const { session } = await requireAdminAuth();
 	const token = session?.user?.token as string;
-	const reservationsResponse = await getAdminReservations(token).catch(() => ({
+
+	const api = new AdminApiClient(token);
+
+	const reservationsResponse = await api.getReservations().catch(() => ({
 		success: false,
 		count: 0,
 		totalCount: 0,
@@ -26,6 +24,9 @@ export default async function ManageReservationsPage() {
 
 		const { session: actionSession } = await requireAdminAuth();
 		const actionToken = actionSession?.user?.token as string;
+
+		const actionApi = new AdminApiClient(actionToken);
+
 		const reservationId = String(formData.get("reservationId") ?? "").trim();
 		const reserveDate = String(formData.get("reserveDate") ?? "").trim();
 
@@ -33,11 +34,11 @@ export default async function ManageReservationsPage() {
 			return;
 		}
 
-		await updateAdminReservationDate(
-			actionToken,
+		await actionApi.updateReservationDate(
 			reservationId,
-			new Date(reserveDate).toISOString(),
+			new Date(reserveDate).toISOString()
 		);
+
 		revalidatePath("/admin-dashboard/reservations");
 	}
 
@@ -46,13 +47,17 @@ export default async function ManageReservationsPage() {
 
 		const { session: actionSession } = await requireAdminAuth();
 		const actionToken = actionSession?.user?.token as string;
+
+		const actionApi = new AdminApiClient(actionToken);
+
 		const reservationId = String(formData.get("reservationId") ?? "").trim();
 
 		if (!reservationId) {
 			return;
 		}
 
-		await deleteAdminReservation(actionToken, reservationId);
+		await actionApi.deleteReservation(reservationId);
+
 		revalidatePath("/admin-dashboard/reservations");
 	}
 

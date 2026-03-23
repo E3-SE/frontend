@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createAdminShop } from "@/src/lib/admin/adminApi";
+import { AdminApiClient } from "@/src/lib/admin/adminApiClient";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
 import CreateShopForm from "@/src/components/features/shops/createShopForm";
 
@@ -21,12 +21,15 @@ export default async function CreateShopPage() {
     try {
       const { session: actionSession } = await requireAdminAuth();
       const actionToken = actionSession?.user?.token as string;
+
+      const actionApi = new AdminApiClient(actionToken);
+
       const pictures = formData
         .getAll("pictures")
         .map((value) => String(value).trim())
         .filter(Boolean);
 
-      await createAdminShop(actionToken, {
+      await actionApi.createShop({
         name: String(formData.get("name") ?? "").trim(),
         address: String(formData.get("address") ?? "").trim(),
         district: String(formData.get("district") ?? "").trim(),

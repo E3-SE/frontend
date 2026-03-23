@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { AdminUser } from "@/src/lib/admin/adminApi";
+import type { AdminUser } from "@/src/types/api";
 import CreateAdminUserModal from "./createAdminUserModal";
 
 type CreateAdminActionState = {

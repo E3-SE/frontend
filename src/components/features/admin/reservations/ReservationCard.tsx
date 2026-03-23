@@ -1,6 +1,6 @@
 "use client";
 
-import type { AdminReservation } from "@/src/lib/admin/adminApi";
+import type { AdminReservation } from "@/src/types/api";
 import {
 	getUserMeta,
 	getMassageMeta,
@@ -34,8 +34,8 @@ export default function ReservationCard({
 					{Number.isNaN(reserveDate.getTime())
 						? "---"
 						: reserveDate.toLocaleDateString(undefined, {
-								month: "short",
-						  })}
+							month: "short",
+						})}
 				</p>
 				<p className="font-headline text-3xl">
 					{Number.isNaN(reserveDate.getTime())

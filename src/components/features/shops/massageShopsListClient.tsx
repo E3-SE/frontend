@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MassageShop } from "@/interface";
+import { MassageShop } from "@/src/types/interface";
 import { ShopCard } from "@/src/components/features/shops/shopCard";
 
 type MassageShopsListClientProps = {
@@ -110,8 +110,8 @@ export function MassageShopsListClient({
             onClick={handleReset}
             disabled={!hasActiveFilters}
             className={`rounded-full border border-outline-variant/30 bg-surface px-4 py-2 text-sm font-medium text-on-surface-variant transition-all ${hasActiveFilters
-                ? "hover:border-primary hover:bg-primary-fixed hover:text-on-primary-fixed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 active:scale-95"
-                : "cursor-not-allowed opacity-50"
+              ? "hover:border-primary hover:bg-primary-fixed hover:text-on-primary-fixed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 active:scale-95"
+              : "cursor-not-allowed opacity-50"
               }`}
           >
             Reset

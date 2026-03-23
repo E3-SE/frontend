@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { MassagesResponse } from "@/interface";
+import { MassagesResponse } from "@/src/types/interface";
 import { ShopCard } from "@/src/components/features/shops/shopCard";
 import { apiBaseUrl } from "@/src/lib/config";
-import { MassageShopsListClient } from "@/src/components/massageShopsListClient";
+import { MassageShopsListClient } from "@/src/components/features/shops/massageShopsListClient";
 
 export const revalidate = 60;
 

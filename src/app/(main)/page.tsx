@@ -1,4 +1,4 @@
-import { MassagesResponse } from "@/interface";
+import { MassagesResponse } from "@/src/types/interface";
 import { apiBaseUrl } from "@/src/lib/config";
 import { HomePageClient } from "@/src/components/pages/homePageClient";
 
