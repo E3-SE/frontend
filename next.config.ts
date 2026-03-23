@@ -37,6 +37,11 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "fe-storage.rachatat.com",
         pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**.unsplash.com",
+        pathname: "/**",
       }
     ],
   },

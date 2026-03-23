@@ -145,7 +145,7 @@ export default async function MassageShopDetailPage({
                   : "Sign in to continue with your booking flow."}
               </p>
               <Link
-                href={isSignedIn ? `/booking?id=${shop.id}&name=${encodeURIComponent(shop.name)}` : "/login"}
+                href={isSignedIn ? `/booking?id=${shop.id}&name=${encodeURIComponent(shop.name)}&price=${shop.price}` : "/login"}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-4 text-base font-bold text-primary transition-opacity hover:opacity-90"
               >
                 {isSignedIn ? "Book Now" : "Sign In to Book"}

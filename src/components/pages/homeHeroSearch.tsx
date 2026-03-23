@@ -20,7 +20,7 @@ export function HomeHeroSearch({
   onSearchSubmit,
 }: HomeHeroSearchProps) {
   return (
-    <section className="relative h-[95vh] min-h-[85vh] items-center overflow-hidden px-6 py-20 lg:px-20">
+    <section className="relative h-[95vh] min-h-[85vh] items-center px-6 py-20 lg:px-20"> {/* overflow-hidden is to prevent the image from overflowing */}
       <div className="absolute inset-0 z-0">
         <img
           alt="Minimal spa environment with calming colors and soft textures"
@@ -82,7 +82,7 @@ export function HomeHeroSearch({
                 </p>
               ) : (
                 <ul className="divide-y divide-surface-container-high">
-                  {dropdownResults.map((shop) => (
+                  {dropdownResults.slice(0, 3).map((shop) => (
                     <li key={shop._id}>
                       <Link
                         href={`/massage-shops/${shop._id}`}
