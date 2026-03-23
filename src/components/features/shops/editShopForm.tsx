@@ -342,7 +342,7 @@ export default function EditShopForm({
             disabled={isUpdatePending}
             className="rounded-full bg-primary px-8 py-3 text-sm font-semibold text-on-primary transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {isUpdatePending ? "Saving..." : `Save ${formatCurrency(shop.price)} THB Profile`}
+            {isUpdatePending ? "Saving..." : `Save Changes`}
           </button>
         </div>
       </form>
