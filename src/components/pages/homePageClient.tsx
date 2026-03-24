@@ -41,7 +41,7 @@ export function HomePageClient({ shops, loadError }: HomePageClientProps) {
       return;
     }
 
-    router.push(`/massage-shops/searchresult?q=${encodeURIComponent(query)}`);
+    router.push(`/massage-shops?q=${encodeURIComponent(query)}`);
   };
 
   return (
