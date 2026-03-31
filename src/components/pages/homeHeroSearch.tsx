@@ -48,7 +48,7 @@ export function HomeHeroSearch({
           >
             <div className="flex flex-1 items-center rounded-lg bg-surface-container-low px-4 py-3 transition-all focus-within:bg-surface-container-lowest focus-within:ring-1 focus-within:ring-outline-variant/40">
               <span className="mr-3 text-outline">
-                <Image width={20} height={20} src="/search.svg" alt="Search" />
+                <img width={20} height={20} src="/search.svg" alt="Search" />
               </span>
               <input
                 className="w-full border-none bg-transparent text-sm placeholder:text-outline focus:ring-0"

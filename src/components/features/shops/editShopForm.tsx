@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useActionState, useState } from "react";
 import type { AdminShop } from "@/src/types/api";
 import formatPhoneNumber from "@/src/lib/admin/formatPhoneNumber";
@@ -217,8 +218,9 @@ export default function EditShopForm({
 
               <div className="flex flex-col items-center">
                 <div className="relative mb-4 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full bg-primary-fixed">
-                  <img
+                  <Image
                     src={heroImage}
+                    fill
                     alt={`${shop.name} primary preview`}
                     className="h-full w-full object-cover"
                   />

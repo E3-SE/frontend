@@ -1,5 +1,6 @@
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
+import Image from "next/image";
 // 1. Import the class instead of the standalone functions
 import { AdminApiClient } from "@/src/lib/admin/adminApiClient";
 import requireAdminAuth from "@/src/lib/admin/requireAdminAuth";
@@ -61,10 +62,12 @@ export default async function ManageShopsPage() {
               className="group relative flex flex-col overflow-hidden rounded-xl border border-outline-variant/10 bg-surface-container-lowest transition-all duration-500 hover:shadow-xl sm:flex-row"
             >
               <div className="relative h-48 w-full overflow-hidden sm:h-auto sm:w-48">
-                <img
+                <Image
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   src={shop.pictures[0] || "https://placehold.co/600x400?text=No+Image"}
                   alt={`${shop.name} cover`}
+                  fill
+                  // width={500}
                 />
                 <div className="absolute inset-0 bg-primary/20 opacity-0 mix-blend-multiply transition-opacity group-hover:opacity-100" />
               </div>

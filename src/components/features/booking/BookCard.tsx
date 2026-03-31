@@ -9,6 +9,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { useRouter } from 'next/navigation';
 import updateReservation from '../../../lib/reservation/updateReservation';
 import deleteReservation from '../../../lib/reservation/deleteReservation';
+import Image from 'next/image';
 
 interface BookCardProps {
     id?: string;
@@ -77,7 +78,7 @@ export default function BookCard({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-8 bg-surface-container-lowest border border-outline/20 rounded-xl w-full gap-6 shadow-sm hover:shadow-md transition-shadow">
             <div className="flex items-start gap-6">
                 <div className="w-24 h-24 shrink-0 rounded-lg overflow-hidden bg-surface-dim shadow-none">
-                    <img src={imageSrc} alt={title} className="w-full h-full object-cover" />
+                    <Image src={imageSrc} alt={title} width={96} height={96} className="w-full h-full object-cover" />
                 </div>
 
                 <div className="flex flex-col gap-2">

@@ -20,7 +20,7 @@ export function ShopCard({ shop }: ShopCardProps) {
           />
           <div className="absolute right-2 top-4 flex items-center gap-1 rounded-full bg-surface-container-lowest/90 px-3 py-1 backdrop-blur">
             <span>
-              <Image width={14} height={14} src="/star.svg" alt="Star" />
+              <img width={14} height={14} src="/star.svg" alt="Star" />
             </span>
             
             <span className="text-sm font-bold">{shop.averageRating === 0 ? "No Ratings" : shop.averageRating.toFixed(1)}</span>
@@ -33,7 +33,7 @@ export function ShopCard({ shop }: ShopCardProps) {
           </h3>
           <p className="flex items-center gap-1 text-sm text-on-surface-variant">
             <span>
-              <Image width={14} height={14} src="/map-pin.svg" alt="Map pin" />
+              <img width={14} height={14} src="/map-pin.svg" alt="Map pin" />
             </span>
             {shop.district}, {shop.province}
           </p>

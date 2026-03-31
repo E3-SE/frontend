@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import type { AdminUser } from "@/src/types/api";
 import CreateAdminUserModal from "./createAdminUserModal";
 
@@ -179,8 +180,10 @@ export default function UsersListClient({
               className="group flex flex-col gap-6 rounded-4xl border border-outline-variant/5 bg-surface-container-lowest p-6 shadow-sm transition-shadow hover:shadow-md xl:flex-row xl:items-center xl:gap-10"
             >
               <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary-fixed text-xl font-bold text-primary">
-                <img
-                  src={`https://img.rachatat.com/insecure/plain/https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${user._id}`}
+                <Image
+                  src={`https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${user._id}`}
+                  width={14}
+                  height={14}
                   alt="User avatar"
                   className="h-12 w-12 rounded-full object-cover"
                 />

@@ -1,5 +1,6 @@
 import BookCard from "./BookCard";
 import { getServerSession } from "next-auth";
+import Image from "next/image";
 import { authOptions } from "@/src/app/api/auth/[...nextauth]/authOptions";
 import getReservation, { ReservationMassage } from "@/src/lib/reservation/getReservation";
 import getShopById from "@/src/lib/shop/getShopById";

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { FormEvent, Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
@@ -223,10 +224,10 @@ function RegisterPageContent() {
 
 			<section className="relative hidden bg-surface-container lg:col-span-7 lg:block">
 				<div className="absolute inset-0 z-0">
-					<img
-						src="https://img.rachatat.com/insecure/plain/https://fe-storage.rachatat.com/auth-image-4.png"
+					<Image
+						src="https://fe-storage.rachatat.com/auth-image-4.png"
 						alt="Luxury Spa Interior"
-						// fill
+						fill
 						sizes="58vw"
 						className="h-full w-full object-cover brightness-[0.85] grayscale-20"
 					/>

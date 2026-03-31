@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import ShopImageUrlDialog from "./shopImageUrlDialog";
 
 const EMPTY_IMAGES: string[] = [];
@@ -214,8 +215,9 @@ export default function ShopImageManager({
                       </p>
                     </div>
                   ) : (
-                    <img
+                    <Image
                       src={url}
+                      fill
                       alt={`Shop image ${index + 1}`}
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={() => markImageFailed(index)}
