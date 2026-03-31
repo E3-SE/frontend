@@ -1,1 +1,1 @@
-export const apiBaseUrl = "https://be-project-68-pikiwedia.vercel.app";
+export const apiBaseUrl = "https://e3-backend.vercel.app";
