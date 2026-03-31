@@ -181,10 +181,11 @@ export default function UsersListClient({
             >
               <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-primary-fixed text-xl font-bold text-primary">
                 <Image
-                  src={`https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${user._id}`}
+                  src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${user._id}`}
                   width={14}
                   height={14}
                   alt="User avatar"
+                  unoptimized={true}
                   className="h-12 w-12 rounded-full object-cover"
                 />
               </div>
