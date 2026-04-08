@@ -185,7 +185,7 @@ export default function UsersListClient({
                   width={14}
                   height={14}
                   alt="User avatar"
-                  unoptimized={true}
+                  // unoptimized={true}
                   className="h-12 w-12 rounded-full object-cover"
                 />
               </div>

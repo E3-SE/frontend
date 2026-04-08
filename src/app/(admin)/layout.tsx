@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { redirect, notFound, unauthorized, forbidden } from "next/navigation";
 import getSessionAuthContext from "@/src/lib/auth/getSessionAuthContext";
 import AdminNav from "../../components/features/admin/adminNav";
@@ -65,9 +66,11 @@ export default async function AdminLayout({
 										{profile?.data?.role ?? "admin"}
 									</p>
 								</div>
-								<img
-									src={`https://img.rachatat.com/insecure/plain/https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${profile?.data?._id ?? "admin"}`}
+								<Image
+									src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${profile?.data?._id ?? "admin"}`}
 									alt="User avatar"
+									width={40}
+									height={40}
 									className="h-10 w-10 rounded-full object-cover"
 								/>
 							</summary>

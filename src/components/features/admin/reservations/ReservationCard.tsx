@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { AdminReservation } from "@/src/types/api";
 import {
 	getUserMeta,
@@ -51,9 +52,11 @@ export default function ReservationCard({
 					</p>
 					<div className="flex items-center gap-3">
 						<div className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary-container text-xs font-bold text-on-secondary-container">
-							<img
-								src={`https://img.rachatat.com/insecure/plain/https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${userMeta.name.split(" ")[0]}`}
+							<Image
+								src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${userMeta.name.split(" ")[0]}`}
 								alt="User avatar"
+								width={40}
+								height={40}
 								className="h-10 w-10 rounded-full object-cover"
 							/>
 						</div>
