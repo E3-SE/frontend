@@ -22,10 +22,12 @@ export function HomeHeroSearch({
   return (
     <section className="relative h-[95vh] min-h-[85vh] items-center px-6 py-20 lg:px-20"> {/* overflow-hidden is to prevent the image from overflowing */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           alt="Minimal spa environment with calming colors and soft textures"
           className="h-full w-full object-cover"
-          src="https://img.rachatat.com/insecure/rs:fill:1200/plain/https://fe-storage.rachatat.com/home-banner-2.jpg"
+          width={1000}
+          height={1000}
+          src="https://fe-storage.rachatat.com/home-banner-2.jpg"
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-linear-to-r from-background via-background/40 to-transparent" />

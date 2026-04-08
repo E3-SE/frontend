@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import getSessionAuthContext from "@/src/lib/auth/getSessionAuthContext";
+
 
 const navLinks = [
   { href: "/", label: "Home", authRequired: false, adminOnly: false },
@@ -87,10 +89,12 @@ export async function Navbar() {
             </span>
             <details className="group relative">
               <summary className="flex list-none cursor-pointer items-center gap-2 rounded-full p-1 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 [&::-webkit-details-marker]:hidden">
-                <img
-                  src={`https://img.rachatat.com/insecure/plain/https://api.dicebear.com/9.x/lorelei/svg%3Fseed=${profile.data._id}`}
+                <Image
+                  src={`https://api.dicebear.com/9.x/lorelei/svg?seed=${profile.data._id}`}
                   alt="User avatar"
-                  className="h-10 w-10 rounded-full object-cover"
+                  width={40}
+                  height={40}
+                  // unoptimized
                 />
               </summary>
               <div className="invisible absolute right-0 mt-2 w-48 overflow-hidden rounded-xl bg-surface-container-lowest py-2 opacity-0 shadow-[0_8px_32px_rgb(26_28_24/0.08)] transition-all duration-200 group-open:visible group-open:opacity-100">
